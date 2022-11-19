@@ -5,7 +5,11 @@ const router = express.Router()
 const basePath = config.basePath;
 
 router.get('/hello', (req, res) => {
-  res.send(`Hello World!`);
+	let name = "World";
+	if (req.query.name) {
+		name = req.query.name;
+	}
+	res.send(`Hello ${name}!`);
 });
 
 router.use(express.static('public'))
